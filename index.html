@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校園設備報修</title>
+
+    <!-- PWA 設定 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffcc00">
+    <link rel="icon" href="icons/icon-192.png">
+    <!-- iPhone 加到主畫面用 -->
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="設備報修">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>校園設備報修</h1>
+
+    <h2>選擇設備</h2>
+    <div id="equipment-container">
+        <div class="equipment-item" data-equipment="飲水機">飲水機</div>
+        <div class="equipment-item" data-equipment="冷氣">冷氣</div>
+        <div class="equipment-item" data-equipment="投影機">投影機</div>
+    </div>
+
+    <h2>選擇問題類型</h2>
+    <select id="problem-type">
+        <option value="">請選擇</option>
+        <option value="無法開機">無法開機</option>
+        <option value="漏水 / 異音">漏水 / 異音</option>
+        <option value="效果不佳">效果不佳（不冷、不熱、畫面模糊）</option>
+        <option value="其他">其他</option>
+    </select>
+
+    <h2>問題描述</h2>
+    <textarea id="description" placeholder="例如：A棟3樓飲水機沒有熱水"></textarea>
+
+    <button id="submit-button">提交報修</button>
+    <button id="reset-button">重新填寫</button>
+    <div id="confirmation-message"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // 註冊 Service Worker（PWA 離線功能）
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+</html>
